@@ -44,6 +44,13 @@ OPTIONS:
    --download   auto download images
 ```
 
+Download
+--------
+[Releases](https://github.com/ww24/got/releases)
+
+* `all-in-one.tar.gz` と `all-in-one.zip` には全てのプラットフォーム向けの実行ファイルが含まれています。
+* `got-` から始まるファイルは、各プラットフォーム向けの実行ファイルです。環境に合わせてダウンロードして下さい。
+
 LICENSE
 -------
 [MIT](LICENSE)
