@@ -16,7 +16,7 @@ before_deploy:
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
-  file: $(ls dist)
+  file: [$(ls dist | awk 'BEGIN{ORS=","}{print$1}')]
   skip_cleanup: true
   on:
     branch: release
