@@ -3,6 +3,7 @@
 !.travis.yml
 
 got
+coverage.out
 dist
 
 Thumbs.db

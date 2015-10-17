@@ -1,6 +1,10 @@
 Go Twitter utility tools
 ========================
-Twitter API を利用したりスクレイピングするツールです。
+
+[![Build Status][travis-img]][travis-url]
+[![Coverage Status][coveralls-img]][coveralls-url]
+
+Twitter API を利用したりスクレイピングするコマンドラインツールです。
 
 Usage
 -----
@@ -39,3 +43,12 @@ OPTIONS:
    --orig       set original image flag
    --download   auto download images
 ```
+
+LICENSE
+-------
+[MIT](LICENSE)
+
+[travis-url]: https://travis-ci.org/ww24/got
+[travis-img]: https://api.travis-ci.org/ww24/got.svg
+[coveralls-url]: https://coveralls.io/github/ww24/got?branch=master
+[coveralls-img]: https://coveralls.io/repos/ww24/got/badge.svg?branch=master&service=github
