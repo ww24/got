@@ -5,6 +5,7 @@ env:
   - "PATH=/home/travis/gopath/bin:$PATH"
 before_install:
   - go get github.com/mitchellh/gox
+  - go get github.com/tcnksm/ghr
   - go get github.com/axw/gocov/gocov
   - go get github.com/mattn/goveralls
   - go get golang.org/x/tools/cmd/cover
@@ -14,10 +15,8 @@ script:
 before_deploy:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
 deploy:
-  provider: releases
-  api_key: $GITHUB_TOKEN
-  file: [$(ls dist | awk 'BEGIN{ORS=","}{print$1}')]
-  skip_cleanup: true
   on:
-    branch: release
+    branch: master
     tags: true
+after_deploy:
+  - ghr --username $(echo $TRAVIS_REPO_SLUG | awk 'BEGIN{FS="/"}{print$1}') --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
