@@ -19,4 +19,5 @@ deploy:
   file: dist
   skip_cleanup: true
   on:
+    branch: release
     tags: true
