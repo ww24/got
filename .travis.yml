@@ -15,13 +15,15 @@ script:
 before_deploy:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
   - zip all-in-one.zip dist/*
+  - tar xzvf all-in-one.tar.gz dist/*
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
-  file: all-in-one.zip
+  file:
+    - all-in-one.zip
+    - all-in-one.tar.gz
   skip_cleanup: true
   on:
-    branch: release
     tags: true
 after_deploy:
-  - ghr --username $(echo $TRAVIS_REPO_SLUG | awk 'BEGIN{FS="/"}{print$1}') --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
+  - ghr --username $(echo $TRAVIS_REPO_SLUG | awk 'BEGIN{FS="/"}{print$1}') --token $GITHUB_TOKEN --replace $TRAVIS_TAG dist/
