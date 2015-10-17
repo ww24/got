@@ -1,0 +1,8 @@
+.*
+!.gitignore
+!.travis.yml
+
+got
+dist
+
+Thumbs.db
