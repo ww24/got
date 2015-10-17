@@ -15,7 +15,7 @@ script:
 before_deploy:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
   - zip all-in-one.zip dist/*
-  - tar xzvf all-in-one.tar.gz dist/*
+  - tar czvf all-in-one.tar.gz dist/*
 deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
