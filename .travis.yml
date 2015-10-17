@@ -14,9 +14,14 @@ script:
   - goveralls -coverprofile=coverage.out -service travis-ci -repotoken $COVERALLS_TOKEN
 before_deploy:
   - gox -output "dist/{{.OS}}_{{.Arch}}_{{.Dir}}"
+  - zip all-in-one.zip dist/*
 deploy:
+  provider: releases
+  api_key: $GITHUB_TOKEN
+  file: all-in-one.zip
+  skip_cleanup: true
   on:
-    branch: master
+    branch: release
     tags: true
 after_deploy:
   - ghr --username $(echo $TRAVIS_REPO_SLUG | awk 'BEGIN{FS="/"}{print$1}') --token $GITHUB_TOKEN --replace --prerelease --debug pre-release dist/
